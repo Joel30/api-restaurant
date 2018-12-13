@@ -1,20 +1,18 @@
 var express = require('express');
-var
-var createError = require('http-errors');
 var path = require('path');
-var favicon = require('serve-favicon')
+var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser')
-
+var bodyParser = require('body-parser');
 
 var index = require('./routes/index');
-var service = require('./routes/api/v1.0/services');
+//var service = require('./routes/api/v1.0/services');
 var restaurant = require('./routes/api/v1.0/restaurant');
 var order = require('./routes/api/v1.0/orders');
 var detail= require('./routes/api/v1.0/details');
-var client= require('./routes/api/v1.0/client');
-var menus= require('./routes/api/v1.0/menus');
+var client = require('./routes/api/v1.0/client');
+var menu = require('./routes/api/v1.0/menus');
+
 /*var restaurant = require('./routes/api/v1.0/restaurant');
 
 var detail= require('./routes/api/v1.0/details');
@@ -36,13 +34,12 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
-app.use('/api/v1.0/', service);
+//app.use('/api/v1.0/', service);
 app.use('/api/v1.0/', restaurant);
-app.use('/api/v1.0/', client);
-app.use('/api/menus', menus);
 app.use('/api/v1.0/', order);
 app.use('/api/v1.0/', detail)
 app.use('/api/v1.0/', client)
+app.use('/api/v1.0/', menu)
 /*app.use('/api/v1.0/restaurant', restaurant);
 app.use('/api/v1.0/details', detail);
 app.use('/api/v1.0/orders', order);*/
