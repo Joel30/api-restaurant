@@ -1,0 +1,72 @@
+[33mcommit dc0f709e7b016258bbd27a980ff27568dc0aa915[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Author: Joel30 <joel3.0cj@gmail.com>
+Date:   Wed Dec 12 22:23:30 2018 -0400
+
+    1er commit api-restaurant-details-orders
+
+[33mcommit 3b54dbd90b851e1ebb3c136322ccd2a9502c7376[m[33m ([m[1;31morigin/master[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Tue Jun 19 15:39:15 2018 -0400
+
+    services
+
+[33mcommit 2f8ade33f061d53cf97df0affd9c110140508ff0[m
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Tue Jun 19 14:24:30 2018 -0400
+
+    filtros server
+
+[33mcommit d58d3996bb03c56037d93d445efb18c7abd45635[m
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Tue May 29 10:58:38 2018 -0400
+
+    schema
+
+[33mcommit ae4fe1931003829c3026ca75eeee5d065d1848e5[m
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Thu Apr 19 19:28:12 2018 -0400
+
+    Upload images
+
+[33mcommit f34700da9247cb917861967a07c5bbf888f4a554[m
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Tue Apr 17 15:04:45 2018 -0400
+
+    Rest complete for user
+
+[33mcommit e4cd753691ab51669c45138eca4e8b06de155c54[m
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Tue Apr 10 16:11:08 2018 -0400
+
+    Rest api example
+
+[33mcommit 35c46ec99a6a4f9c5cb51a4569156822441b69d5[m
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Tue Apr 3 15:29:32 2018 -0400
+
+    Docker app
+
+[33mcommit 152297ddf0b92bfb82751a16d29f3f1fd228ab5a[m
+Merge: 6f91334 0c7b633
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Tue Mar 27 16:11:32 2018 -0400
+
+    fix conflics of merging
+
+[33mcommit 6f91334f431803df4b9f0f3fa117bfd0693bfdb2[m
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Tue Mar 27 15:58:34 2018 -0400
+
+    Service for search foods and KCAL
+
+[33mcommit 0c7b63361964a6f0f083b69b0c1ebc46937d005a[m
+Author: Ditmar Castro <ditmarcastro@gmail.com>
+Date:   Tue Mar 27 15:39:20 2018 -0400
+
+    service IMC created
+
+[33mcommit 7137208ecc6b239044afed9bc166bf8d4ecd9b84[m
+Author: Ditmar <Ditmarcastro@gmail.com>
+Date:   Tue Mar 27 15:07:53 2018 -0400
+
+    first commit for the project
