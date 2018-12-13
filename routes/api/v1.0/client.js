@@ -7,7 +7,7 @@ var sha1 = require('sha1');
 
 const CLIENT = require("../../../database/collections/client");
 
-var storage = multer.diskStorage({
+/*var storage = multer.diskStorage({
   destination: "./public/restaurants",
   filename: function (req, file, cb) {
     console.log("-------------------------");
@@ -17,7 +17,7 @@ var storage = multer.diskStorage({
 });
 var upload = multer({
   storage: storage
-}).single("img");
+}).single("img");*/
 //verificacion verifytoken
 
 //Middelware
@@ -66,12 +66,12 @@ router.post("/login", (req, res, next) => {
     } else {
       console.log("error enviar token");
       res.status(200).json({
-        msn : "Este usuario no esta en la base de datos"
+        msn : "Este usuario no esta registrado en la base de datos"
       });
     }
   });
 });
-router.post("/", (req, res) => {
+router.post("/client", (req, res) => {
   var client = req.body;
   //VALIDACION DE DATOS DEL CLIENT
   var name_reg = /\w{3,}/g
@@ -79,6 +79,7 @@ router.post("/", (req, res) => {
   var phone_reg = /\d{7}[0-9]/g
   var ci_reg =/\d{1,}\w{1,3}/g
   var password_reg =/\w{6,}/g
+  //var prueba = client.email.match(phone_reg)
   console.log(client);
   if(client.name.match(name_reg) == null){
     res.status(400).json({
@@ -92,6 +93,9 @@ router.post("/", (req, res) => {
     });
     return;
   }
+  //console.log(client.phone.length);
+  //console.log(prueba);
+  //console.log(client.phone.match(phone_reg));
   if(client.phone.match(phone_reg) == null||client.phone.length!=8){
     res.status(400).json({
       msn : "EL TELEFONO NO ES CORRECTO"
@@ -127,8 +131,10 @@ router.post("/", (req, res) => {
     res.status(200).json(docs);
   });
 });
+
 //METODO GET..........................
-router.get("/",(req, res) => {
+
+router.get("/client",(req, res) => {
 
   CLIENT.find({}).exec((err, docs) => {
     if (err) {
@@ -141,7 +147,7 @@ router.get("/",(req, res) => {
   });
 });
 // METODO PATCH...............................................
-router.patch("/", function (req, res) {
+router.patch("/client", function (req, res) {
   var params = req.body;
   var id = req.query.id;
   //Collection of data
@@ -177,12 +183,10 @@ router.patch("/", function (req, res) {
 });
 
 //METODO DELETE............................................
-router.delete('/:id', function (req, res, next) {
-  let idUser = req.params.id;
-
-  CLIENT.remove({
-      _id: idUser
-  }).exec((err, result) => {
+router.delete('/client', function (req, res, next) {
+  let idUser = req.body._id;
+  console.log(idUser);
+  CLIENT.findOne({_id: idUser}).remove().exec((err, result) => {
       if (err) {
           res.status(500).json({
               error: err
@@ -192,7 +196,7 @@ router.delete('/:id', function (req, res, next) {
       if (result) {
           res.status(200).json({
               message: "Cliente eliminado",
-              result: result
+              //result: result
           })
       }
   })
