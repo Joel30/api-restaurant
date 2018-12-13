@@ -1,11 +1,10 @@
+
 var express = require('express');
 var multer = require('multer');
 var router = express.Router();
 var fs = require('fs');
 //var _ = require("underscore");
 var RESTAURANT = require("../../../database/collections/restaurant");
-/*var MENUS = require("../../../database/collections/menus");
-var CLIENT = require("../../../database/collections/client");*/
 
 var jwt = require("jsonwebtoken");
 
@@ -48,9 +47,59 @@ function verifytoken (req, res, next) {
 ////////////////////// RESTAURANT //////////////////////
 
 //API RESTAURANTE
-//POST
+//VALIDACION DE RESTAURANT------------------------------------------------
 router.post("/restaurant", /*verifytoken,*/ (req, res) => {
-    var data = req.body;
+    var restaurant = req.body;
+
+    var name_reg = /\w{3,}/g
+    var nit_reg =  /\w{3,}/g
+    var property_reg =  /\w{3,}/g
+    var street_reg =  /\w{3,}/g
+
+    console.log(restaurat);
+    var pr = restaurat.name.match(name_reg);
+    console.log(pr);
+    //console.log(restaurant);
+    if(restaurant.name.match(name_reg) == null){
+      res.status(400).json({
+        msn : "EL NOMBRE DEL RESTAURANT NO ES CORRECTO"
+      });
+      return;
+    }
+    if(restaurant.nit.match(nit_reg) == null){
+      res.status(400).json({
+        msn : "NIT INCORRECTO"
+      });
+      return;
+    }
+    if(restaurant.phone.match(phone_reg) == null||restaurant.phone.length!=8){
+      res.status(400).json({
+        msn : "EL TELEFONO NO ES CORRECTO"
+      });
+      return;
+    }
+    if(restaurant.street.match(street_reg) == null){
+      res.status(400).json({
+        msn : "EL NOMBRE DE LA CALLE NO EXISTE"
+      });
+      return;
+    }
+    if(restaurant.property.match(property_reg) == null){
+      res.status(400).json({
+        msn : "EL NOMBRE DE LA PROPIEDAD NO EXISTE"
+      });
+      return;
+    }
+
+    var restaurantdata = {
+      name: restaurant.name,
+      nit : restaurant.nit,
+      property: restaurant.property,
+      street : restaurant.street,
+      registerdate: new Date
+    };
+
+
     data["registerdate"] = new Date();
     //validacion
     var newrestaurant = new RESTAURANT(data);
@@ -128,7 +177,7 @@ router.delete("/restaurant", verifytoken,  (req, res) => {
       res.status(200).json(docs);
   });
 });
-//PUT
+//----------------PUT------------------------------
 router.put("/restaurant",/* verifytoken,*/(req, res) => {
   var url = req.url;
   var id = url.split("/")[2];
