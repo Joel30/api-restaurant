@@ -55,6 +55,8 @@ router.post("/restaurant", /*verifytoken,*/ (req, res) => {
     var nit_reg =  /\w{3,}/g
     var property_reg =  /\w{3,}/g
     var street_reg =  /\w{3,}/g
+    var phone_reg = /\d{7}[0-9]/g
+    var picture_reg = /\w{3,}/g
 
     console.log(restaurat);
     var pr = restaurat.name.match(name_reg);
@@ -90,12 +92,27 @@ router.post("/restaurant", /*verifytoken,*/ (req, res) => {
       });
       return;
     }
+    if(restaurant.picture.match(picture_reg) == null){
+      res.status(400).json({
+        msn : "EL NOMBRE DE LA CALLE NO EXISTE"
+      });
+      return;
+    }
+
+    if(restaurant.phone.match(phone_reg) == null||restaurant.phone.length!=8){
+      res.status(400).json({
+        msn : "EL TELEFONO NO ES CORRECTO"
+      });
+      return;
+    }
 
     var restaurantdata = {
       name: restaurant.name,
       nit : restaurant.nit,
       property: restaurant.property,
       street : restaurant.street,
+      phone: restaurant.phone,
+      picture: restaurant.picture,
       registerdate: new Date
     };
 
