@@ -63,7 +63,7 @@ router.post("/restaurant", /*verifytoken,*/ (req, res) => {
     });
 });
 //GET RESTAURANT
-router.get("/restaurant", verifytoken, (req, res) =>{
+router.get("/restaurant", /*verifytoken,*/ (req, res) =>{
     var skip = 0;
     var limit = 10;
     if (req.query.skip != null) {
@@ -238,7 +238,7 @@ router.post("/logorestaurant", verifytoken, (req, res) => {
 });
 ////////////////////// CLIENT //////////////////////
 //POST CLIENT
-router.post("/client", (req, res) => {
+/*router.post("/client", (req, res) => {
     var client = req.body;
     client["registerdate"] = new Date();
     //validacion
@@ -269,20 +269,20 @@ router.post("/client", (req, res) => {
         }
     });
 
-});
+});*/
 //LOGIN
 router.post("/login", (req, res, next) => {
   var email = req.body.email;
   var password = req.body.password;
   console.log(email + "" + password);
-  var result = CLIENT.findOne({email: email,password: password}).exec((err, doc) => {
+  var result = CLIENT.findOne({email: email, password: password}).exec((err, doc) => {
     if (err) {
       res.status(400).json({
         msn : "No se puede concretar con la peticion "
       });
       return;
     }
-    console.log(result);
+    console.log(doc);
     if (doc) {
       //res.status(200).json(doc);
       jwt.sign({name: doc.email, password: doc.password}, "llavesecreta", (err, token) => {

@@ -1,4 +1,5 @@
 var express = require('express');
+var
 var createError = require('http-errors');
 var path = require('path');
 var favicon = require('serve-favicon')
@@ -8,7 +9,7 @@ var bodyParser = require('body-parser')
 
 
 var index = require('./routes/index');
-var usersRouter = require('./routes/users');
+var service = require('./routes/api/v1.0/services');
 var restaurant = require('./routes/api/v1.0/restaurant');
 var order = require('./routes/api/v1.0/orders');
 var detail= require('./routes/api/v1.0/details');
@@ -35,12 +36,13 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
+app.use('/api/v1.0/', service);
 app.use('/api/v1.0/', restaurant);
 app.use('/api/v1.0/', client);
 app.use('/api/menus', menus);
 app.use('/api/v1.0/', order);
 app.use('/api/v1.0/', detail)
-
+app.use('/api/v1.0/', client)
 /*app.use('/api/v1.0/restaurant', restaurant);
 app.use('/api/v1.0/details', detail);
 app.use('/api/v1.0/orders', order);*/
